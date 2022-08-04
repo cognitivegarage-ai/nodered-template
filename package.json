@@ -25,6 +25,7 @@
         "node-red-contrib-kafka-manager": "~0.5.1",
         "nodemon": "^2.0.18",
         "swagger-ui-express": "^4.5.0",
-        "yamljs": "^0.3.0"
+        "yamljs": "^0.3.0",
+        "serverless-http": "^2.7.0"
     }
 }

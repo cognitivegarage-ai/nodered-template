@@ -37,290 +37,49 @@
         "useCredentials": false
     },
     {
-        "id": "66250be5bfc6d27b",
-        "type": "inject",
+        "id": "cb35ede73d7fada3",
+        "type": "http in",
         "z": "e34226b2e39fb0a2",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 60,
+        "url": "/nodered",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 100,
         "wires": [
             [
-                "b98023de175dd29d"
+                "a906de2ca5a450c0"
             ]
         ]
     },
     {
-        "id": "1437ae6d78da08eb",
-        "type": "debug",
+        "id": "d8b2ae5f68565d8a",
+        "type": "http response",
         "z": "e34226b2e39fb0a2",
         "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 750,
-        "y": 60,
+        "statusCode": "",
+        "headers": {},
+        "x": 530,
+        "y": 120,
         "wires": []
     },
     {
-        "id": "b98023de175dd29d",
-        "type": "Kafka Producer",
+        "id": "a906de2ca5a450c0",
+        "type": "template",
         "z": "e34226b2e39fb0a2",
         "name": "",
-        "broker": "37e7ceb6f79f5241",
-        "topic": "quickstart",
-        "topicSlash2dot": false,
-        "requireAcks": 1,
-        "ackTimeoutMs": 100,
-        "partitionerType": 0,
-        "key": "",
-        "partition": 0,
-        "attributes": 0,
-        "connectionType": "Producer",
-        "convertFromJson": false,
-        "x": 320,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "118d227bb2161967",
-        "type": "Kafka Consumer",
-        "z": "e34226b2e39fb0a2",
-        "name": "",
-        "broker": "37e7ceb6f79f5241",
-        "regex": false,
-        "topics": [
-            {
-                "topic": "quickstart",
-                "offset": 0,
-                "partition": 0
-            }
-        ],
-        "groupId": "kafka-node-group",
-        "autoCommit": "true",
-        "autoCommitIntervalMs": 5000,
-        "fetchMaxWaitMs": 100,
-        "fetchMinBytes": 1,
-        "fetchMaxBytes": 1048576,
-        "fromOffset": 0,
-        "encoding": "utf8",
-        "keyEncoding": "utf8",
-        "connectionType": "Consumer",
-        "convertToJson": false,
-        "x": 540,
-        "y": 60,
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hello From NodeRED",
+        "output": "str",
+        "x": 380,
+        "y": 100,
         "wires": [
             [
-                "1437ae6d78da08eb"
-            ]
-        ]
-    },
-    {
-        "id": "233d2867330e6cc4",
-        "type": "Kafka Admin",
-        "z": "e34226b2e39fb0a2",
-        "name": "",
-        "broker": "37e7ceb6f79f5241",
-        "x": 390,
-        "y": 300,
-        "wires": [
-            [],
-            []
-        ]
-    },
-    {
-        "id": "31c34a4.2603ab6",
-        "type": "Kafka Admin",
-        "z": "7e22036e.f80bdc",
-        "name": "Kafka Admin",
-        "broker": "37e7ceb6f79f5241",
-        "x": 450,
-        "y": 380,
-        "wires": [
-            [
-                "e63719e6.4207f8"
-            ],
-            [
-                "848b84fd.3738d8"
-            ]
-        ]
-    },
-    {
-        "id": "e63719e6.4207f8",
-        "type": "debug",
-        "z": "7e22036e.f80bdc",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 670,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "9557d6e1.63ba38",
-        "type": "inject",
-        "z": "7e22036e.f80bdc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload",
-                "v": "",
-                "vt": "date"
-            },
-            {
-                "p": "topic",
-                "v": "listTopics",
-                "vt": "string"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "listTopics",
-        "payload": "",
-        "payloadType": "date",
-        "x": 150,
-        "y": 340,
-        "wires": [
-            [
-                "31c34a4.2603ab6"
-            ]
-        ]
-    },
-    {
-        "id": "6907be35.65898",
-        "type": "inject",
-        "z": "7e22036e.f80bdc",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "listGroups",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 300,
-        "wires": [
-            [
-                "31c34a4.2603ab6"
-            ]
-        ]
-    },
-    {
-        "id": "848b84fd.3738d8",
-        "type": "debug",
-        "z": "7e22036e.f80bdc",
-        "name": "error",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 670,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "54bc5863.08ea98",
-        "type": "inject",
-        "z": "7e22036e.f80bdc",
-        "name": "describeGroups",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "describeGroups",
-        "payload": "[\"aGroup\"]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 380,
-        "wires": [
-            [
-                "31c34a4.2603ab6"
-            ]
-        ]
-    },
-    {
-        "id": "2056242a.f330ac",
-        "type": "inject",
-        "z": "7e22036e.f80bdc",
-        "name": "createTopics",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "createTopics",
-        "payload": "[{\"topic\":\"aTestRemoveTopic\",\"partitions\":1,\"replicationFactor\":1},{\"topic\":\"test\",\"partitions\":1,\"replicationFactor\":1},{\"topic\":\"atest\",\"partitions\":1,\"replicationFactor\":1},{\"topic\":\"testCommit\",\"partitions\":1,\"replicationFactor\":1},{\"topic\":\"testRollback\",\"partitions\":1,\"replicationFactor\":1}]",
-        "payloadType": "json",
-        "x": 130,
-        "y": 420,
-        "wires": [
-            [
-                "31c34a4.2603ab6"
-            ]
-        ]
-    },
-    {
-        "id": "8bcb5ffe.b6683",
-        "type": "inject",
-        "z": "7e22036e.f80bdc",
-        "name": "deleteTopics",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "deleteTopics",
-        "payload": "[{\"topic\":\"aTestRemoveTopic\"},{\"topic\":\"aTestRemoveTopic2\"}]",
-        "payloadType": "json",
-        "x": 130,
-        "y": 460,
-        "wires": [
-            [
-                "31c34a4.2603ab6"
+                "d8b2ae5f68565d8a"
             ]
         ]
     }
